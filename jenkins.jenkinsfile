@@ -38,9 +38,17 @@ pipeline  {
             steps {
                 echo " ============== pushing image =================="
                 sh '''
-                docker push macnaer/ss_edup:latest
+                docker push elenastepaniuk/demo:latest
+                '''
+            }
+        }
+		  stage("docker run") {
+            steps {
+                echo " ============== runing image =================="
+                sh '''
+                docker run -d --name demo -p 80:80 elenastepaniuk/demo 
                 '''
             }
         }
     }
-}
+// }
